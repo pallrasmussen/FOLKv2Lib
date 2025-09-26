@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>FOLKv2.Client</PackageId>
-    <Version>0.1.0</Version>
     <Authors>YourCompany</Authors>
     <Company>YourCompany</Company>
     <Product>FOLKv2 Client Library</Product>
@@ -27,6 +26,10 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
     <NoWarn>CS8981;CS1591</NoWarn>
+    <!-- MinVer settings -->
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerAutoIncrement>patch</MinVerAutoIncrement>
+    <MinVerIncludeMetadata>true</MinVerIncludeMetadata>
   </PropertyGroup>
   <ItemGroup>
     <None Include=".github\workflows\ci.yml" />
@@ -43,5 +46,6 @@
     <PackageReference Include="Polly" Version="7.*" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.*" PrivateAssets="All" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.*" PrivateAssets="All" />
+    <PackageReference Include="MinVer" Version="5.*" PrivateAssets="All" />
   </ItemGroup>
 </Project>
