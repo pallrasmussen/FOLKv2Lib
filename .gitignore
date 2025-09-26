@@ -1,1 +1,25 @@
+# Build artifacts
+bin/
+obj/
+artifacts/
+TestResults/
+
+# VS
 .vs/
+
+# User secrets
+**/secrets.json
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# Generated & misc
+*.user
+*.suo
+*.userprefs
+

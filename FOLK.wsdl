@@ -1,0 +1,1574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://us-folk-v2.x-road.eu/producer" xmlns:wsdl="http://www.w3.org/ns/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xrd="http://x-road.eu/xsd/x-road.xsd" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://us-folk-v2.x-road.eu/producer" xmlns:xrdV6="http://x-road.eu/xsd/xroad.xsd">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://us-folk-v2.x-road.eu/producer">
+      <xsd:import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="http://www.w3.org/2005/05/xmlmime" />
+      <xsd:import namespace="http://ws-i.org/profiles/basic/1.1/xsd" schemaLocation="http://ws-i.org/profiles/basic/1.1/swaref.xsd" />
+      <xsd:import namespace="http://x-road.eu/xsd/xroad.xsd" schemaLocation="http://x-road.eu/xsd/xroad.xsd" />
+      <xsd:import namespace="http://x-road.eu/xsd/x-road.xsd" schemaLocation="http://x-road.eu/xsd/x-road.xsd" />
+      <xsd:import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="http://www.w3.org/2005/05/xmlmime" />
+      <xsd:element name="GetCommunityPeopleIds">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:communityPeopleIdsRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetCommunityPeopleIdsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:communityPeopleIdsRequest" />
+            <xsd:element name="response">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="faultCode" type="xrd:faultCode" nillable="true" />
+                  <xsd:element name="faultString" type="xrd:faultString" nillable="true" />
+                  <xsd:element name="PeopleIds" type="tns:ArrayOfPersonIds" />
+                  <xsd:element name="TotalCount" type="int" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Login">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:loginRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LoginResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:loginRequest" />
+            <xsd:element name="response">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="faultCode" type="xrd:faultCode" nillable="true" />
+                  <xsd:element name="faultString" type="xrd:faultString" nillable="true" />
+                  <xsd:element name="token" type="string">
+                    <xsd:annotation>
+                      <xsd:appinfo>
+                        <xrd:title xml:lang="en">Token</xrd:title>
+                      </xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="expires" type="dateTime" nillable="true" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPeoplePublicInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:publicInfoRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddPeopleToCommunity">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:AddPeopleToCommunityRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddPeopleToCommunityResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:AddPeopleToCommunityRequest" />
+            <xsd:element name="response">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="faultCode" type="xrd:faultCode" nillable="true" />
+                  <xsd:element name="faultString" type="xrd:faultString" nillable="true" />
+                  <xsd:element name="AddedPeople" nillable="true" type="tns:ArrayOfAddedPerson" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemovePeopleFromCommunity">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:RemovePeopleFromCommunityRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemovePeopleFromCommunityResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:RemovePeopleFromCommunityRequest" />
+            <xsd:element name="response">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="faultCode" type="xrd:faultCode" nillable="true" />
+                  <xsd:element name="faultString" type="xrd:faultString" nillable="true" />
+                  <xsd:element name="ExternalIds" type="tns:ArrayOfInts" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPerson">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:GetPersonRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPersonResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:GetPersonRequest" />
+            <xsd:element name="response">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="faultCode" type="xrd:faultCode" nillable="true" />
+                  <xsd:element name="faultString" type="xrd:faultString" nillable="true" />
+                  <xsd:element name="ErrorMessage" nillable="true" type="string" />
+                  <xsd:element name="Person" nillable="true" type="tns:Person" />
+                  <xsd:element name="Addresses" nillable="true" type="tns:ArrayOfAddress" />
+                  <xsd:element name="BiologicalParents" nillable="true" type="tns:BiologicalParents" />
+                  <xsd:element name="ChurchMemberships" nillable="true" type="tns:ArrayOfChurchMembership" />
+                  <xsd:element name="Citizenships" nillable="true" type="tns:ArrayOfCitizenship" />
+                  <xsd:element name="CivilStatuses" nillable="true" type="tns:ArrayOfCivilStatus" />
+                  <xsd:element name="ForeignSsns" nillable="true" type="tns:ArrayOfForeignSsn" />
+                  <xsd:element name="Incapacities" nillable="true" type="tns:ArrayOfIncapacity" />
+                  <xsd:element name="JuridicalChildren" nillable="true" type="tns:ArrayOfJuridicalChild" />
+                  <xsd:element name="JuridicalParents" nillable="true" type="tns:ArrayOfJuridicalParent" />
+                  <xsd:element name="Notes" nillable="true" type="tns:ArrayOfNote" />
+                  <xsd:element name="Postbox" nillable="true" type="tns:Postbox" />
+                  <xsd:element name="SpecialMarks" nillable="true" type="tns:ArrayOfSpecialMark" />
+                  <xsd:element name="Spouses" nillable="true" type="tns:ArrayOfSpouse" />
+                  <xsd:element name="Ssns" nillable="true" type="tns:ArrayOfSsn" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetPersonRequest">
+        <xsd:sequence>
+          <xsd:element name="requestBody">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="Id" type="int" />
+                <xsd:element minOccurs="0" name="PublicId" type="int" />
+                <xsd:element minOccurs="0" name="ExternalId" type="int" />
+                <xsd:element minOccurs="0" name="IncludeAddresses" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeAddressesHistory" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeBiologicalParents" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeChurchMembership" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeChurchMembershipHistory" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeCitizenships" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeCitizenshipsHistory" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeCivilStatus" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeCivilStatusHistory" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeForeignSsns" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeIncapacity" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeIncapacityHistory" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeJuridicalChildren" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeJuridicalChildrenHistory" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeJuridicalParents" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeJuridicalParentsHistory" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeNames" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeNamesHistory" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeNotes" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeNotesHistory" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludePostbox" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeSpecialMarks" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeSpecialMarksHistory" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeSpouse" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeSpouseHistory" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeSsn" type="boolean" />
+                <xsd:element minOccurs="0" name="IncludeSsnHistory" type="boolean" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="requestHeader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="token" type="string">
+                  <xsd:annotation>
+                    <xsd:appinfo>
+                      <xrd:title xml:lang="en">FOLK token</xrd:title>
+                    </xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetPeoplePublicInfoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="tns:publicInfoRequest" />
+            <xsd:element name="response">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="faultCode" type="xrd:faultCode" nillable="true" />
+                  <xsd:element name="faultString" type="xrd:faultString" nillable="true" />
+                  <xsd:element name="ListOfPersonPublicInfo" nillable="true" type="tns:ArrayOfPersonPublicInfo" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="communityPeopleIdsRequest">
+        <xsd:sequence>
+          <xsd:element name="requestBody">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="Count" type="int" />
+                <xsd:element minOccurs="0" name="ModifiedBefore" type="dateTime" />
+                <xsd:element minOccurs="0" name="ModifiedSince" type="dateTime" />
+                <xsd:element minOccurs="0" name="SortDescriptions" type="tns:ArrayOfSortDescription" />
+                <xsd:element minOccurs="0" name="StartIndex" type="int" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="requestHeader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="token" type="string">
+                  <xsd:annotation>
+                    <xsd:appinfo>
+                      <xrd:title xml:lang="en">FOLK token</xrd:title>
+                    </xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AddPeopleToCommunityRequest">
+        <xsd:sequence>
+          <xsd:element name="requestBody">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="Date" type="dateTime" />
+                <xsd:element name="ListOfAddPeopleToCommunityCriteria" type="tns:ArrayOfAddPeopleToCommunityCriteria" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="requestHeader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="token" type="string">
+                  <xsd:annotation>
+                    <xsd:appinfo>
+                      <xrd:title xml:lang="en">FOLK token</xrd:title>
+                    </xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RemovePeopleFromCommunityRequest">
+        <xsd:sequence>
+          <xsd:element name="requestBody">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="ExternalIds" type="tns:ArrayOfInts" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="requestHeader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="token" type="string">
+                  <xsd:annotation>
+                    <xsd:appinfo>
+                      <xrd:title xml:lang="en">FOLK token</xrd:title>
+                    </xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="publicInfoRequest">
+        <xsd:sequence>
+          <xsd:element name="requestBody">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="Date" type="dateTime" />
+                <xsd:element name="ListOfPersonPublicInfoCriteria" type="tns:ArrayOfPersonPublicInfoCriteria" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="requestHeader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="token" type="string">
+                  <xsd:annotation>
+                    <xsd:appinfo>
+                      <xrd:title xml:lang="en">FOLK token</xrd:title>
+                    </xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="loginRequest">
+        <xsd:sequence>
+          <xsd:element name="username" type="string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <xrd:title xml:lang="en">FOLK username</xrd:title>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="password" type="string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <xrd:title xml:lang="en">FOLK password</xrd:title>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSpouse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Spouse" nillable="true" type="tns:Spouse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfSpouse" nillable="true" type="tns:ArrayOfSpouse" />
+      <xsd:complexType name="Spouse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="Person" nillable="true" type="tns:Person" />
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSsn">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Ssn" nillable="true" type="tns:Ssn" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Ssn">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+          <xsd:element minOccurs="0" name="Fixed" type="boolean" />
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="Value" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Created" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="AuthorityCode" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Postbox">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="IsDeleted" type="boolean" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+          <xsd:element minOccurs="0" name="PersonModified" type="dateTime" />
+          <xsd:element minOccurs="0" name="PostOffice" nillable="true" type="tns:PostOffice" />
+          <xsd:element minOccurs="0" name="PostalCode" type="short" />
+          <xsd:element minOccurs="0" name="Value" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PostOffice">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CityId" type="int" />
+          <xsd:element minOccurs="0" name="CityName" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="PostalCode" type="short" />
+          <xsd:element minOccurs="0" name="PostboxPostalCode" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfNote">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Note" nillable="true" type="tns:Note" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Note">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+          <xsd:element minOccurs="0" name="Fixed" type="boolean" />
+          <xsd:element minOccurs="0" name="IsDeleted" type="boolean" />
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="Created" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="Text" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="AuthorityCode" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfJuridicalChild">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="JuridicalChild" nillable="true" type="tns:JuridicalChild" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="JuridicalChild">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="Person" nillable="true" type="tns:Person" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfJuridicalParent">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="JuridicalParent" nillable="true" type="tns:JuridicalParent" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="JuridicalParent">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+          <xsd:element minOccurs="0" name="ParentId" type="int" />
+          <xsd:element minOccurs="0" name="Fixed" type="boolean" />
+          <xsd:element minOccurs="0" name="IsDeleted" type="boolean" />
+          <xsd:element minOccurs="0" name="IsNotRegistered" type="boolean" />
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="Parent" nillable="true" type="tns:Person" />
+          <xsd:element minOccurs="0" name="Created" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="AuthorityCode" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPerson">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Person" nillable="true" type="tns:Person" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfIncapacity">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Incapacity" nillable="true" type="tns:Incapacity" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Incapacity">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+          <xsd:element minOccurs="0" name="Guardian1Id" type="int" />
+          <xsd:element minOccurs="0" name="Guardian1PublicId" type="int" />
+          <xsd:element minOccurs="0" name="Guardian2Id" type="int" />
+          <xsd:element minOccurs="0" name="Guardian2PublicId" type="int" />
+          <xsd:element minOccurs="0" name="Fixed" type="boolean" />
+          <xsd:element minOccurs="0" name="IsDeleted" type="boolean" />
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="Created" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="AuthorityCode" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfForeignSsn">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ForeignSsn" nillable="true" type="tns:ForeignSsn" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ForeignSsn">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+          <xsd:element minOccurs="0" name="IsDeleted" type="boolean" />
+          <xsd:element minOccurs="0" name="Country" nillable="true" type="tns:Country" />
+          <xsd:element minOccurs="0" name="Created" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="Value" nillable="true" type="string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCivilStatus">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CivilStatus" nillable="true" type="tns:CivilStatus" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CivilStatus">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+          <xsd:element minOccurs="0" name="Type" type="tns:CivilStatusType" />
+          <xsd:element minOccurs="0" name="Fixed" type="boolean" />
+          <xsd:element minOccurs="0" name="IsDeleted" type="boolean" />
+          <xsd:element minOccurs="0" name="SkipFullValidation" type="boolean" />
+          <xsd:element minOccurs="0" name="Created" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="AuthorityCode" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCitizenship">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Citizenship" nillable="true" type="tns:Citizenship" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Citizenship">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+          <xsd:element minOccurs="0" name="Fixed" type="boolean" />
+          <xsd:element minOccurs="0" name="IsDeleted" type="boolean" />
+          <xsd:element minOccurs="0" name="Country" nillable="true" type="tns:Country" />
+          <xsd:element minOccurs="0" name="Created" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="AuthorityCode" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfChurchMembership">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ChurchMembership" nillable="true" type="tns:ChurchMembership" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ChurchMembership">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+          <xsd:element minOccurs="0" name="IsDeleted" type="boolean" />
+          <xsd:element minOccurs="0" name="IsMember" type="boolean" />
+          <xsd:element minOccurs="0" name="Fixed" type="boolean" />
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="Reason" nillable="true" type="tns:ChurchMembershipCreationReason" />
+          <xsd:element minOccurs="0" name="Created" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="AuthorityCode" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ChurchMembershipCreationReason">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="ChildBaptism">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="AdultBaptism">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="ChurchMember">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="RegistrationNonChurchMember">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="UnregistrationChurchMember">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="BiologicalParents">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Father" nillable="true" type="tns:Person" />
+          <xsd:element minOccurs="0" name="FatherId" type="int" />
+          <xsd:element minOccurs="0" name="FatherStatus" type="tns:ParentStatus" />
+          <xsd:element minOccurs="0" name="IsFixed" type="boolean" />
+          <xsd:element minOccurs="0" name="Mother" nillable="true" type="tns:Person" />
+          <xsd:element minOccurs="0" name="MotherId" type="int" />
+          <xsd:element minOccurs="0" name="MotherStatus" type="tns:ParentStatus" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ParentStatus">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="Ok" />
+          <xsd:enumeration value="IsNotRegistered" />
+          <xsd:enumeration value="RequiresInvestigation" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Person">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PublicId" type="int" />
+          <xsd:element minOccurs="0" name="SSN" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="SsnCreationReason" type="tns:SsnCreationReason" />
+          <xsd:element minOccurs="0" name="Gender" type="tns:Gender" />
+          <xsd:element minOccurs="0" name="DateOfBirth" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="JobTitle" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Names" nillable="true" type="tns:ArrayOfName" />
+          <xsd:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
+          <xsd:element minOccurs="0" name="BirthOrder" type="tns:BirthOrder" />
+          <xsd:element minOccurs="0" name="Birthplace" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="CivilStatus" type="tns:CivilStatusType" />
+          <xsd:element minOccurs="0" name="Status" type="tns:PersonStatus" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="SsnCreationReason">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="None" />
+          <xsd:enumeration value="Birth" />
+          <xsd:enumeration value="Movement" />
+          <xsd:enumeration value="Tax" />
+          <xsd:enumeration value="Administration" />
+          <xsd:enumeration value="BirthForeignMother" />
+          <xsd:enumeration value="ChurchAdministration" />
+          <xsd:enumeration value="Pseudo" />
+          <xsd:enumeration value="NordicMoving" />
+          <xsd:enumeration value="Historical" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Gender">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="Male" />
+          <xsd:enumeration value="Female" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfPersonIds">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PersonIds" nillable="true" type="tns:PersonIds" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfInts">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Value" type="int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonIds">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PublicId" type="int" />
+          <xsd:element minOccurs="0" name="ExternalId" type="int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSortDescription">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SortDescription" type="tns:SortDescription" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SortDescription">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Direction" type="tns:SortDirection" />
+          <xsd:element minOccurs="0" name="PropertyName" nillable="true" type="string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="SortDirection">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="Ascending" />
+          <xsd:enumeration value="Descending" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfAddress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Address" nillable="true" type="tns:Address" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPersonPublicInfoCriteria">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PersonPublicInfoCriteria" nillable="true" type="tns:PersonPublicInfoCriteria" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAddPeopleToCommunityCriteria">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AddPeopleToCommunityCriteria" nillable="true" type="tns:AddPeopleToCommunityCriteria" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonPublicInfoCriteria">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Building" type="short" />
+          <xsd:element minOccurs="0" name="City" type="string" />
+          <xsd:element minOccurs="0" name="DateOfBirth" type="dateTime" />
+          <xsd:element minOccurs="0" name="FirstName" type="string" />
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="LastName" type="string" />
+          <xsd:element minOccurs="0" name="PublicId" type="int" />
+          <xsd:element minOccurs="0" name="SSN" type="string" />
+          <xsd:element minOccurs="0" name="Street" type="string" />
+          <xsd:element minOccurs="0" name="ExternalId" type="int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AddPeopleToCommunityCriteria">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SSN" type="string" />
+          <xsd:element minOccurs="0" name="FirstName" type="string" />
+          <xsd:element minOccurs="0" name="LastName" type="string" />
+          <xsd:element minOccurs="0" name="DateOfBirth" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="Street" type="string" />
+          <xsd:element minOccurs="0" name="Building" type="short" />
+          <xsd:element minOccurs="0" name="City" type="string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAddedPerson">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AddedPerson" nillable="true" type="tns:AddedPerson" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AddedPerson">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ExternalId" type="int" />
+          <xsd:element minOccurs="0" name="Name" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Street" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="BuildingNumber" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="BuildingCode" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Apartment" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="PostalCode" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="City" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Country" nillable="true" type="string" />
+          <xsd:element name="Status" type="tns:AddedPersonStatus" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPersonPublicInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PersonPublicInfo" nillable="true" type="tns:PersonPublicInfo" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonPublicInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ErrorMessage" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PublicId" type="int" />
+          <xsd:element minOccurs="0" name="ExternalId" type="int" />
+          <xsd:element minOccurs="0" name="JobTitle" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Names" nillable="true" type="tns:ArrayOfName" />
+          <xsd:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
+          <xsd:element minOccurs="0" name="ContactAddress" nillable="true" type="tns:Address" />
+          <xsd:element minOccurs="0" name="CivilStatus" nillable="true" type="tns:CivilStatusType" />
+          <xsd:element minOccurs="0" name="CivilStatusDate" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="IsIncapable" nillable="true" type="boolean" />
+          <xsd:element minOccurs="0" name="Guardian1Name" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Guardian1Address" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Guardian2Name" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Guardian2Address" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="SpecialMarks" nillable="true" type="tns:SpecialMark" />
+          <xsd:element minOccurs="0" name="Status" type="tns:PersonStatus" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Address">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Street" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="BuildingNumber" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="BuildingCode" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Apartment" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="PostalCode" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="City" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Country" nillable="true" type="tns:Country" />
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="PersonAddressType" type="tns:PersonAddressType" />
+          <xsd:element minOccurs="0" name="AddressType" type="tns:AddressType" />
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="IsHidden" nillable="true" type="boolean" />
+          <xsd:element minOccurs="0" name="Fixed" type="boolean" />
+          <xsd:element minOccurs="0" name="Created" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="PersonAddressId" type="int" />
+          <xsd:element minOccurs="0" name="AuthorityCode" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="AddressType">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="AddressRegister" />
+          <xsd:enumeration value="OtherAddress" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Country">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="short" />
+          <xsd:element minOccurs="0" name="Name" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="NameFo" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="NameEn" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Code" nillable="true" type="string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="AddedPersonStatus">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="Added" />
+          <xsd:enumeration value="AlreadyExistsInCommunity" />
+          <xsd:enumeration value="PersonIsNotFound" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EventCode">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="None" />
+          <xsd:enumeration value="BirthSSN" />
+          <xsd:enumeration value="MovementSSN" />
+          <xsd:enumeration value="TaxSSN" />
+          <xsd:enumeration value="AdministrationSSN" />
+          <xsd:enumeration value="BirthForeignMotherSSN" />
+          <xsd:enumeration value="ChurchAdministrationSSN" />
+          <xsd:enumeration value="PseudoSSN" />
+          <xsd:enumeration value="NordicMovingSSN" />
+          <xsd:enumeration value="HistoricalSSN" />
+          <xsd:enumeration value="Birth">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Adoption">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Deadborn">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="NewNames">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">21</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="NamesChange">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">22</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="NamesMovement">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">23</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Names">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">24</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="ChildBaptism">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">31</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="AdultBaptism">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="ChurchMember">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">33</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="RegistrationNonChurchMember">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">34</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="UnregistrationChurchMember">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">35</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="BiologicalParents">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">41</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="JuridicalParents">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">51</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="PersonAddress">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">61</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="ContactAddress">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">62</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Citizenship">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">71</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Marriage">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">81</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Spouse">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">82</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Separation">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">83</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Divorce">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">84</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="RemoveSeparation">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">85</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Death">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">91</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="NewMovementToFO">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">101</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="MovementToFO">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">102</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="MovementInsideFO">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">103</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="MovementFromFO">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">104</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="MovementOutsideFO">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">105</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="MovementForeignAddress">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">106</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="JobTitle">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">111</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Note">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">121</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="CivilStatus">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">131</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Postbox">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">141</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="AdoptiveParents">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">151</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="SpecialMark">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">161</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Partnership">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">171</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Incapacity">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">181</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="DeletePerson">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">191</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Foreigner">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">201</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="PersonWithSpecialSSN">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">211</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Birthplace">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">221</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="AddSpouse">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">231</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PersonAddressType">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="Living" />
+          <xsd:enumeration value="SupplementFO" />
+          <xsd:enumeration value="Contact" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="BirthOrder">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="SingleBirth" />
+          <xsd:enumeration value="FirstBorn" />
+          <xsd:enumeration value="SecondBorn" />
+          <xsd:enumeration value="ThirdBorn" />
+          <xsd:enumeration value="ForthBorn" />
+          <xsd:enumeration value="FifthBorn" />
+          <xsd:enumeration value="SixthBorn" />
+          <xsd:enumeration value="SeventhBorn" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CivilStatusType">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="Born" />
+          <xsd:enumeration value="Married" />
+          <xsd:enumeration value="Separated" />
+          <xsd:enumeration value="Divorced" />
+          <xsd:enumeration value="Widow" />
+          <xsd:enumeration value="Dead" />
+          <xsd:enumeration value="Partner" />
+          <xsd:enumeration value="LongestLiving" />
+          <xsd:enumeration value="BreakingOff" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfName">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Name" nillable="true" type="tns:Name" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Name">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Value" nillable="true" type="string" />
+          <xsd:element minOccurs="0" name="Type" type="tns:NameType" />
+          <xsd:element minOccurs="0" name="Order" type="short" />
+          <xsd:element minOccurs="0" name="IsHidden" nillable="true" type="boolean" />
+          <xsd:element minOccurs="0" name="Fixed" type="boolean" />
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="Created" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="AuthorityCode" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="NameType">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="OfficialName" />
+          <xsd:enumeration value="FirstName" />
+          <xsd:enumeration value="PreMiddleName" />
+          <xsd:enumeration value="MiddleName" />
+          <xsd:enumeration value="PreLastName" />
+          <xsd:enumeration value="LastName" />
+          <xsd:enumeration value="NickName" />
+          <xsd:enumeration value="BirthLastName" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="SpecialMark">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="int" />
+          <xsd:element minOccurs="0" name="PersonId" type="int" />
+          <xsd:element minOccurs="0" name="Fixed" type="boolean" />
+          <xsd:element minOccurs="0" name="IsDeleted" type="boolean" />
+          <xsd:element minOccurs="0" name="EventCode" type="tns:EventCode" />
+          <xsd:element minOccurs="0" name="Created" type="dateTime" />
+          <xsd:element minOccurs="0" name="Modified" type="dateTime" />
+          <xsd:element minOccurs="0" name="From" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="Type" type="tns:SpecialMarkType" />
+          <xsd:element minOccurs="0" name="AuthorityCode" type="short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="SpecialMarkType">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="ProtectedNameAndAddress" />
+          <xsd:enumeration value="ExcludeFromStatisticAndResearch" />
+          <xsd:enumeration value="ExcludeFromMarketing" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="SpouseInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="AuthorityCode" type="short" />
+          <xsd:element minOccurs="0" name="CivilStatus" type="tns:CivilStatusType" />
+          <xsd:element minOccurs="0" name="HusbandId" type="int" />
+          <xsd:element minOccurs="0" name="HusbandNames" nillable="true" type="tns:ArrayOfName" />
+          <xsd:element minOccurs="0" name="LeaveWorkItemOpened" nillable="true" type="boolean" />
+          <xsd:element minOccurs="0" name="MarriageDate" type="dateTime" />
+          <xsd:element minOccurs="0" name="To" nillable="true" type="dateTime" />
+          <xsd:element minOccurs="0" name="WifeId" type="int" />
+          <xsd:element minOccurs="0" name="WifeNames" nillable="true" type="tns:ArrayOfName" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSpecialMark">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SpecialMark" nillable="true" type="tns:SpecialMark" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="PersonStatus">
+        <xsd:restriction base="string">
+          <xsd:enumeration value="Active" />
+          <xsd:enumeration value="Deleted" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+  </types>
+  <message name="xrdV6header">
+    <part name="protocolVersion" element="xrdV6:protocolVersion" />
+    <part name="id" element="xrdV6:id" />
+    <part name="client" element="xrdV6:client" />
+    <part name="service" element="xrdV6:service" />
+  </message>
+  <message name="Login">
+    <part name="body" element="tns:Login" />
+  </message>
+  <message name="LoginResponse">
+    <part name="body" element="tns:LoginResponse" />
+  </message>
+  <message name="AddPeopleToCommunity">
+    <part name="body" element="tns:AddPeopleToCommunity" />
+  </message>
+  <message name="AddPeopleToCommunityResponse">
+    <part name="body" element="tns:AddPeopleToCommunityResponse" />
+  </message>
+  <message name="RemovePeopleFromCommunity">
+    <part name="body" element="tns:RemovePeopleFromCommunity" />
+  </message>
+  <message name="RemovePeopleFromCommunityResponse">
+    <part name="body" element="tns:RemovePeopleFromCommunityResponse" />
+  </message>
+  <message name="GetPeoplePublicInfo">
+    <part name="body" element="tns:GetPeoplePublicInfo" />
+  </message>
+  <message name="GetPeoplePublicInfoResponse">
+    <part name="body" element="tns:GetPeoplePublicInfoResponse" />
+  </message>
+  <message name="GetCommunityPeopleIds">
+    <part name="body" element="tns:GetCommunityPeopleIds" />
+  </message>
+  <message name="GetCommunityPeopleIdsResponse">
+    <part name="body" element="tns:GetCommunityPeopleIdsResponse" />
+  </message>
+  <message name="GetPerson">
+    <part name="body" element="tns:GetPerson" />
+  </message>
+  <message name="GetPersonResponse">
+    <part name="body" element="tns:GetPersonResponse" />
+  </message>
+  <message name="listMethods">
+    <part name="body" element="xrd:listMethods" />
+  </message>
+  <message name="listMethodsResponse">
+    <part name="body" element="xrd:listMethodsResponse" />
+  </message>
+  <message name="testSystem">
+    <part name="body" element="xrd:testSystem" />
+  </message>
+  <message name="testSystemResponse">
+    <part name="body" element="xrd:testSystemResponse" />
+  </message>
+  <message name="standardheader">
+    <part name="consumer" element="xrd:consumer" />
+    <part name="producer" element="xrd:producer" />
+    <part name="userId" element="xrd:userId" />
+    <part name="service" element="xrd:service" />
+    <part name="id" element="xrd:id" />
+  </message>
+  <portType name="CrsPortType">
+    <operation name="Login">
+      <documentation>
+        <xrd:title>FOLK Login</xrd:title>
+      </documentation>
+      <input message="tns:Login" />
+      <output message="tns:LoginResponse" />
+    </operation>
+    <operation name="AddPeopleToCommunity">
+      <documentation>
+        <xrd:title>Add people to community</xrd:title>
+      </documentation>
+      <input message="tns:AddPeopleToCommunity" />
+      <output message="tns:AddPeopleToCommunityResponse" />
+    </operation>
+    <operation name="RemovePeopleFromCommunity">
+      <documentation>
+        <xrd:title>Remove people from community</xrd:title>
+      </documentation>
+      <input message="tns:RemovePeopleFromCommunity" />
+      <output message="tns:RemovePeopleFromCommunityResponse" />
+    </operation>
+    <operation name="GetPeoplePublicInfo">
+      <documentation>
+        <xrd:title>Get person info</xrd:title>
+      </documentation>
+      <input message="tns:GetPeoplePublicInfo" />
+      <output message="tns:GetPeoplePublicInfoResponse" />
+    </operation>
+    <operation name="GetCommunityPeopleIds">
+      <documentation>
+        <xrd:title>Get id</xrd:title>
+      </documentation>
+      <input message="tns:GetCommunityPeopleIds" />
+      <output message="tns:GetCommunityPeopleIdsResponse" />
+    </operation>
+    <operation name="GetPerson">
+      <documentation>
+        <xrd:title>Get person details</xrd:title>
+      </documentation>
+      <input message="tns:GetPerson" />
+      <output message="tns:GetPersonResponse" />
+    </operation>
+    <operation name="listMethods">
+      <documentation>
+        <xrd:title>listMethods</xrd:title>
+      </documentation>
+      <input message="tns:listMethods" />
+      <output message="tns:listMethodsResponse" />
+    </operation>
+    <operation name="testSystem">
+      <documentation>
+        <xrd:title>testSystem</xrd:title>
+      </documentation>
+      <input message="tns:testSystem" />
+      <output message="tns:testSystemResponse" />
+    </operation>
+  </portType>
+  <binding name="CrsBinding" type="tns:CrsPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Login">
+      <soap:operation soapAction="Login" style="document" />
+      <xrd:version>v1</xrd:version>
+      <input>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </input>
+      <output>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </output>
+    </operation>
+    <operation name="AddPeopleToCommunity">
+      <soap:operation soapAction="AddPeopleToCommunity" style="document" />
+      <xrd:version>v1</xrd:version>
+      <input>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </input>
+      <output>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </output>
+    </operation>
+    <operation name="RemovePeopleFromCommunity">
+      <soap:operation soapAction="RemovePeopleFromCommunity" style="document" />
+      <xrd:version>v1</xrd:version>
+      <input>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </input>
+      <output>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPeoplePublicInfo">
+      <soap:operation soapAction="GetPeoplePublicInfo" style="document" />
+      <xrd:version>v1</xrd:version>
+      <input>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </input>
+      <output>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCommunityPeopleIds">
+      <soap:operation soapAction="GetCommunityPeopleIds" style="document" />
+      <xrd:version>v1</xrd:version>
+      <input>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </input>
+      <output>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPerson">
+      <soap:operation soapAction="GetPerson" style="document" />
+      <xrd:version>v1</xrd:version>
+      <input>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:body use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </input>
+      <output>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:standardheader" part="consumer" use="literal" />
+        <soap:header message="tns:standardheader" part="producer" use="literal" />
+        <soap:header message="tns:standardheader" part="userId" use="literal" />
+        <soap:header message="tns:standardheader" part="id" use="literal" />
+        <soap:header message="tns:standardheader" part="service" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </output>
+    </operation>
+    <operation name="listMethods">
+      <soap:operation soapAction="listMethods" style="document" />
+      <input>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </input>
+      <output>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </output>
+    </operation>
+    <operation name="testSystem">
+      <soap:operation soapAction="testSystem" style="document" />
+      <input>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </input>
+      <output>
+        <soap:body parts="body" use="literal" />
+        <soap:header message="tns:xrdV6header" part="protocolVersion" use="literal" />
+        <soap:header message="tns:xrdV6header" part="id" use="literal" />
+        <soap:header message="tns:xrdV6header" part="client" use="literal" />
+        <soap:header message="tns:xrdV6header" part="service" use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ICrsService">
+    <port name="FOLKHeldinAdapterV2" binding="tns:CrsBinding">
+      <soap:address location="http://example.org/xroad-endpoint" />
+      <xrd:title>Test persons register service</xrd:title>
+      <xrd:address producer="us-folk-v2" />
+    </port>
+  </service>
+</definitions>
