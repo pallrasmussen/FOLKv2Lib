@@ -7,6 +7,11 @@ on:
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:
+    inputs:
+      run_integration:
+        description: "Run integration tests"
+        required: false
+        default: "false"
 
 permissions:
   contents: read
@@ -36,7 +41,7 @@ jobs:
       - name: Test
         run: |
           if ls **/*Tests.csproj 1> /dev/null 2>&1; then
-            dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage" --results-directory TestResults
+            dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage" --results-directory TestResults --filter "TestCategory!=Integration"
           else
             echo "No test projects found"
           fi
@@ -105,3 +110,29 @@ jobs:
           if [ -d TestResults ]; then
             echo "Test results generated."; ls -R TestResults | head -100
           fi
+
+  integration-tests:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_integration == 'true' }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      RUN_INTEGRATION: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup .NET 9 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+      - name: Restore
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Run integration tests
+        run: |
+          if ls **/*IntegrationTests.csproj 1> /dev/null 2>&1; then
+            dotnet test --configuration Release --no-build --filter "TestCategory=Integration|FullyQualifiedName~IntegrationTests" || exit 1
+          else
+            echo "No integration test projects"; fi
