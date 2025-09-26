@@ -41,6 +41,27 @@ jobs:
             echo "No test projects found"
           fi
 
+      - name: Convert coverage to Cobertura
+        if: always()
+        run: |
+          if [ -d TestResults ]; then
+            reportFile=$(find TestResults -name 'coverage.cobertura.xml' | head -1)
+            if [ -f "$reportFile" ]; then
+              echo "Found cobertura report: $reportFile"
+            else
+              echo "No cobertura report found"; ls -R TestResults | head -50
+            fi
+          fi
+
+      - name: Upload coverage to Codecov
+        if: success() && env.CODECOV_TOKEN != ''
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        uses: codecov/codecov-action@v4
+        with:
+          files: "$(find TestResults -name 'coverage.cobertura.xml' | tr '\n' ',')"
+          fail_ci_if_error: false
+
       - name: Pack
         run: dotnet pack FOLKv2.Lib.csproj --configuration Release -o artifacts /p:ContinuousIntegrationBuild=true
 
